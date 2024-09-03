@@ -1,0 +1,100 @@
+{% extends '../base.html' %} {% load static %} {% block title %} Upgrade
+{%endblock %} {% block css %}
+<link rel="stylesheet" href="{% static 'authcss.css' %}" />
+{% endblock %} {% block body %}
+
+<section class="container forms">
+  <!-- Signup Form -->
+
+  <div class="form">
+    <div class="form-content">
+      <header>Upgrade</header>
+      <form action="{% url 'Upgrade' %}" method="post">
+        {% csrf_token %}
+        <div class="field input-field">
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            value="{{email}}"
+            class="input"
+            required
+          />
+        </div>
+        <div class="field input-field">
+          <input
+            type="text"
+            placeholder="Name"
+            name="name"
+            value="{{user}}"
+            disabled
+            class="input"
+            required
+          />
+        </div>
+        
+          <input
+            type="text"
+            placeholder="Active Subscription"
+            name="activeSub"
+            value="{{subscription.subId}}"
+            hidden
+            class="input"
+            required
+          />
+        
+
+        <!-- <div class="field input-field"> -->
+        <select
+          style="padding: 0 15px; font-size: 16px"
+          class="input-field field"
+          name="selectedSub"
+        >
+          <option selected>{{subscription.subId}}</option>
+
+          {% for subs in availableSubs %}
+
+          <option value="{{subs.subId}}">{{subs.subId}}</option>
+          {% endfor %}
+        </select>
+        <!-- </div> -->
+
+        <div class="field input-field">
+            <input
+              type="text"
+              placeholder="Price"
+              name="price"
+              value="90"
+              disabled
+              class="input"
+              required
+            />
+          </div>
+
+        <div class="field button-field">
+          <button>Proceed to Payment</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- <div class="line"></div> -->
+
+    <!-- <div class="media-options">
+      <a href="#" class="field facebook">
+        <i class="bx bxl-facebook facebook-icon"></i>
+        <span>Login with Facebook</span>
+      </a>
+    </div>
+
+    <div class="media-options">
+      <a href="#" class="field google">
+        <img src="#" alt="" class="google-img" />
+        <span>Login with Google</span>
+      </a>
+    </div> -->
+  </div>
+</section>
+
+{% endblock %} {% block js %}
+<script src="{% static 'js/authform.js' %}"></script>
+{% endblock %}

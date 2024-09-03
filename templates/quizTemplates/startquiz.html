@@ -1,0 +1,43 @@
+{% extends '../base.html' %} {% load static %} {% block title %} Start Quiz {% endblock %} {% block css %}
+<link rel="stylesheet" href="{% static 'authcss.css' %}" />
+{% endblock %} {% block body %}
+
+<section class="container forms">
+  <!-- Signup Form -->
+
+  <div class="form">
+    <div class="form-content">
+      <header>Start Quiz</header>
+      <form action="{% url 'QuizWindow' %}" method="post">
+        {% csrf_token %}
+        <div class="field input-field">
+          <input type="text" placeholder="{{quizID}}" value="{{quizID}}" name="quizID" readonly class="input" required />
+        </div>
+        <div class="field input-field">
+          <input type="email" placeholder="Email" name="email" class="input" required />
+        </div>
+        <div class="field input-field">
+          <input type="text" placeholder="Name" name="name" class="input" required />
+        </div>
+        <div class="field input-field">
+          <input type="text" placeholder="Mobile No." minlength="10" maxlength="10" name="mobile" class="input" required />
+        </div>
+        <div class="field input-field">
+          <input type="text" placeholder="Organization"  name="org" class="input" required />
+        </div>
+
+      
+
+        <div class="field button-field">
+          <button>Start</button>
+        </div>
+      </form>
+    </div>
+
+  
+  </div>
+</section>
+
+{% endblock %} {% block js %}
+<script src="{% static 'js/authform.js' %}"></script>
+{% endblock %}

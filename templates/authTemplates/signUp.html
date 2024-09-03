@@ -1,0 +1,80 @@
+{% extends '../base.html' %} {% load static %} {% block title %} Sign Up {% endblock %} {% block css %}
+<link rel="stylesheet" href="{% static 'authcss.css' %}" />
+{% endblock %} {% block body %}
+
+<section class="container forms">
+  <!-- Signup Form -->
+
+  <div class="form">
+    <div class="form-content">
+      <header>Sign Up</header>
+      <form action="{% url 'SignUp' %}" method="post">
+        {% csrf_token %}
+        <div class="field input-field">
+          <input type="email" placeholder="Email" name="email" class="input" required />
+        </div>
+        <div class="field input-field">
+          <input type="text" placeholder="Name" name="name" class="input" required />
+        </div>
+        <div class="field input-field">
+          <input type="text" placeholder="Mobile No." minlength="10" maxlength="10" name="mobile" class="input" required />
+        </div>
+        <div class="field input-field">
+          <input type="text" placeholder="Organization"  name="org" class="input" required />
+        </div>
+
+        <div class="field input-field">
+          <input
+            type="password"
+            placeholder="Create password"
+            class="password"
+            required
+            name="pass1"
+          />
+        </div>
+
+        <div class="field input-field">
+          <input
+            type="password"
+            placeholder="Confirm password"
+            class="password"
+            name="pass2"
+            required
+          />
+          <i class="fa-regular fa-eye-slash eye-icon"></i>
+        </div>
+
+        <div class="field button-field">
+          <button>Sign Up</button>
+        </div>
+      </form>
+
+      <div class="form-link">
+        <span
+          >Already have an account?
+          <a href="{% url 'Login' %}" class="">Login</a></span
+        >
+      </div>
+    </div>
+
+    <!-- <div class="line"></div> -->
+
+    <!-- <div class="media-options">
+      <a href="#" class="field facebook">
+        <i class="bx bxl-facebook facebook-icon"></i>
+        <span>Login with Facebook</span>
+      </a>
+    </div>
+
+    <div class="media-options">
+      <a href="#" class="field google">
+        <img src="#" alt="" class="google-img" />
+        <span>Login with Google</span>
+      </a>
+    </div> -->
+  </div>
+</section>
+
+{% endblock %} {% block js %}
+<script src="{% static 'js/authform.js' %}"></script>
+{% endblock %}

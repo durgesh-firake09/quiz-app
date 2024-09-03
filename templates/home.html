@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block title %} Home - Quiz {% endblock %} 
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'home.css' %}" />
+
+    
+{% endblock %} {% block body %}
+
+<main>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-text">
+                <h1>Host, Play, Conquer: Your Ultimate Quiz Hub!</h1>
+                <a href="#" class="call-now">Get Started</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://cdn.pixabay.com/photo/2024/02/16/10/43/ai-generated-8577293_1280.png" alt="Laptop with Marketing Services">
+            </div>
+        </div>
+</main>
+{% endblock %}

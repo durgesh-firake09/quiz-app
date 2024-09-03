@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} {% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'common.css' %}" />
+    <link rel="stylesheet" href="{% static 'navbar.css' %}" />
+    <link rel="stylesheet" href="{% static 'alert.css' %}" />
+    {% block css %} {% endblock %}
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul class="navlist">
+        <img
+          class="logo nav-items"
+          src="{% static 'images/logo.jpg' %}"
+          alt=""
+        />
+        <a href="{% url 'Home' %}"><li class="nav-items">Home</li></a>
+        <a href="{% url 'JoinQuiz' %}"><li class="nav-items">Join Quiz</li></a>
+
+        {% if loggedIn %}
+        <a href="{% url 'CreateQuiz' %}"
+          ><li class="nav-items">Create Quiz</li></a
+        >
+        
+        <!-- <div class="dropdown nav-items" style="text-align: center;"> -->
+          <div class="dropdown" style="text-align: center;" href="#">
+            <li style="list-style: none;" class="">Profile</li>
+            <div class="dropdown-content">
+              <li  href="#" style="list-style: none;">{{user}}</li>
+              <a href="{% url 'QuizDashboard' %}"><li  href="#" style="list-style: none;">Quiz Dashboard</li></a>
+              <a href="{% url 'Logout' %}">Logout</a>
+              </div>
+          </div>
+          
+        </div>
+        
+        {% else %}
+        <a href="{% url 'Pricing' %}"><li class="nav-items">Pricing</li></a>
+        <a href="{% url 'SignUp' %}"
+          ><li class="nav-items button-1">Sign Up</li></a
+        >
+        <a href="{% url 'Login' %}"
+          ><li class="nav-items button-1">Login</li></a
+        >
+        {% endif %}
+      </ul>
+    </nav>
+    {% if messages %} {% for message in messages %}
+
+    <div class="alert1 {{message.tags}}">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';"
+        >&times;</span
+      >
+      {{message}}
+    </div>
+    {% endfor %} {% endif %} {% block body %} {% endblock body %} {% block js %}
+    {% endblock %}
+    <script
+      src="https://kit.fontawesome.com/40544e4cd8.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
